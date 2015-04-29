@@ -1,4 +1,5 @@
 require_relative 'Day'
+require_relative 'Year'
 
 class Month
   attr_reader :month, :year
@@ -7,6 +8,7 @@ class Month
     @month = month
     @year = year
     @day = Day.day_of_week(@month, @year)
+    @leap_year = Year.leap_year(@month, @year)
   end
 
   def name
@@ -29,17 +31,25 @@ class Month
   end
 
 
-  def length_of_months
+  def number_of_days_in_month
+
+
     case @month
     when 1, 3, 5 ,7, 8, 10, 12
-      @number_of_days_in_month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15 ,16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      number_of_days_in_month = 31
     when 4, 6, 9, 11
-      @number_of_days_in_month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15 ,16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+      number_of_days_in_month = 30
+    when 2
+      if not @leap_year
+        number_of_days_in_month = 28
+      else
+        number_of_days_in_month = 29
+      end
     end
   end
 
   # def number_of_days_in_month
-  #   number_of_days_in_month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15 ,16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  #   number_of_days_in_month = (1..number_of_days_in_month)
   #   #number_of_days_in_month.each_slice(7) { |a| puts a }
   #   number_of_days_in_month.join(" ")
   # end
@@ -47,6 +57,7 @@ class Month
 
   def to_s
   name_of_weekdays = "Su Mo Tu We Th Fr Sa"
+
     <<EOS
     #{name} #{year}
 #{name_of_weekdays}

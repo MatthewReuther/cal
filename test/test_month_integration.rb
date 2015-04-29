@@ -4,6 +4,7 @@ class TestMonthIntegration < Minitest::Test
 
 # 0 args -> help message
   def test_no_arguments_help_message
+    skip
     output = `./cal.rb`
     expected = <<EOS
 Date not in acceptable format/range.
@@ -12,6 +13,7 @@ EOS
   end
 
   def test_month_starts_on_sunday
+    skip
     output = `./cal.rb 01 2012`
     expected = <<EOS
     January 2012
@@ -27,6 +29,7 @@ EOS
   end
 
   def test_regular_leap_year
+    skip
     output = `./cal.rb 02 2012`
     expected = <<EOS
    February 2012
@@ -42,6 +45,7 @@ EOS
   end
 
   def test_century_leap_year
+    skip
     output = `./cal.rb 02 2000`
     expected = <<EOS
    February 2000
@@ -57,6 +61,7 @@ EOS
   end
 
  def test_400_leap_year
+    skip
     output = `./cal.rb 02 2400`
     expected = <<EOS
    February 2400
@@ -73,6 +78,7 @@ EOS
 
 # Test One for Each Month
  def test_month_of_january
+    skip
     output = `./cal.rb 01 2011`
     expected = <<EOS
     January 2011
@@ -89,6 +95,7 @@ EOS
   end
 
  def test_month_of_feburary
+    skip
     output = `./cal.rb 02 2011`
     expected = <<EOS
    February 2011
@@ -104,6 +111,7 @@ EOS
   end
 
  def test_month_of_march
+    skip
     output = `./cal.rb 03 2011`
     expected = <<EOS
      March 2011
@@ -119,6 +127,7 @@ EOS
   end
 
  def test_month_of_april
+    skip
     output = `./cal.rb 04 2011`
     expected = <<EOS
      April 2011
@@ -134,6 +143,7 @@ EOS
   end
 
  def test_month_of_may
+    skip
     output = `./cal.rb 05 2011`
     expected = <<EOS
       May 2011
@@ -149,6 +159,7 @@ EOS
   end
 
  def test_month_of_june
+    skip
     output = `./cal.rb 06 2011`
     expected = <<EOS
      June 2011
@@ -164,6 +175,7 @@ EOS
   end
 
  def test_month_of_july
+    skip
     output = `./cal.rb 07 2011`
     expected = <<EOS
      July 2011
@@ -180,6 +192,7 @@ EOS
   end
 
  def test_month_of_august
+    skip
     output = `./cal.rb 08 2011`
     expected = <<EOS
     August 2011
@@ -195,6 +208,7 @@ EOS
   end
 
  def test_month_of_september
+    skip
     output = `./cal.rb 09 2011`
     expected = <<EOS
    September 2011
@@ -210,6 +224,7 @@ EOS
   end
 
  def test_month_of_october
+    skip
     output = `./cal.rb 10 2011`
     expected = <<EOS
     October 2011
@@ -226,6 +241,7 @@ EOS
   end
 
  def test_month_of_november
+    skip
     output = `./cal.rb 11 2011`
     expected = <<EOS
    November 2011
@@ -241,6 +257,7 @@ EOS
   end
 
  def test_month_of_december
+    skip
     output = `./cal.rb 12 2011`
     expected = <<EOS
    December 2011
@@ -257,6 +274,7 @@ EOS
 
 # Minimum Month and Year
  def test_minium_month_and_year_to_input
+    skip
     output = `./cal.rb 01 1800`
     expected = <<EOS
     January 1800
@@ -273,6 +291,7 @@ EOS
 
 # Maximum Month and Year
  def test_maximum_month_and_year_to_input
+    skip
     output = `./cal.rb 12 3000`
     expected = <<EOS
    December 3000
@@ -289,6 +308,7 @@ EOS
 
 # Dates that are too early to input
  def test_date_to_early_to_input
+    skip
     output = `./cal.rb 12 1799`
     expected = <<EOS
 Date not in acceptable format/range.
@@ -299,6 +319,7 @@ EOS
 
 # Dates that are too late to input
  def test_date_to_late_to_input
+    skip
     output = `./cal.rb 01 3001`
     expected = <<EOS
 Date not in acceptable format/range.
@@ -309,6 +330,7 @@ EOS
 
 #Invalid Dates to enter
   def test_invalid_date_argument_name_of_month
+      skip
     output = `./cal.rb April 2014`
     expected = <<EOS
 Date not in acceptable format/range.
@@ -317,6 +339,7 @@ EOS
   end
 
   def test_invalid_date_argument_year_before_month
+      skip
     output = `./cal.rb 2014 04`
     expected = <<EOS
 Date not in acceptable format/range.

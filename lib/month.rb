@@ -9,10 +9,11 @@ class Month
     @year = year
     @day = Day.day_of_week(@month, @year)
     @leap_year = Year.leap_year(@month, @year)
+    @amount_of_days_in_month = amount_of_days_in_month
   end
 
   def name
-    name_of_months = {
+    name = {
       0 => " ",
       1 => "January",
       2 => "February",
@@ -27,26 +28,69 @@ class Month
       11 => "November",
       12 => "December",
      }
-     return name_of_months[@month]
+     return name[@month]
   end
 
 
-  def number_of_days_in_month
-
-
+  def amount_of_days_in_month
     case @month
     when 1, 3, 5 ,7, 8, 10, 12
-      number_of_days_in_month = 31
+      amount_of_days_in_month = 31
     when 4, 6, 9, 11
-      number_of_days_in_month = 30
+      amount_of_days_in_month = 30
     when 2
-      if not @leap_year
-        number_of_days_in_month = 28
+      if !@leap_year
+        amount_of_days_in_month = 28
       else
-        number_of_days_in_month = 29
+        amount_of_days_in_month = 29
       end
     end
   end
+
+
+    def days
+    day = Day.day_of_week(@month, @year)
+    array_of_days = (1..amount_of_days_in_month).to_a
+    string = ""
+    if @day.day_of_week == 0
+      array_of_days.unshift("  ", "  ", "  ", "  ", "  ", "  ")
+    elsif @day.day_of_week == 2
+      array_of_days.unshift("  ")
+    elsif @day.day_of_week == 3
+      array_of_days.unshift("  ", "  ")
+    elsif @day.day_of_week == 4
+      array_of_days.unshift("  ", "  ", "  ")
+    elsif @day.day_of_week == 5
+      array_of_days.unshift("  ", "  ", "  ", "  ")
+    elsif @day.day_of_week == 6
+      array_of_days.unshift("  ", "  ", "  ", "  ", "  ")
+    end
+
+    array_of_days = array_of_days.map{ |x| x.to_s.rjust(2) }
+      first_week = arr[0..6].join(" ")
+      second_week = arr[7..13].join(" ")
+      third_week = arr[14..20].join(" ")
+      fourth_week = arr[21..27].join(" ")
+      fifth_week = arr[28..34].join(" ")
+
+    if day.day_of_week == 0 || @day.day_of_week == 6
+      final_week = array_of_days[35..36].join(" ")
+    else
+      final_week = " "
+    end
+    string = "
+      #{first_week}\n
+      #{second_week}\n
+      #{third_week}\n
+      #{fourth_week}\n
+      #{fifth_week}\n
+      #{final_week}".rstrip
+  end
+
+  def header
+    header = "#{month_name} #{year}".center(20).rstrip
+  end
+
 
   # def number_of_days_in_month
   #   number_of_days_in_month = (1..number_of_days_in_month)
@@ -61,9 +105,8 @@ class Month
     <<EOS
     #{name} #{year}
 #{name_of_weekdays}
-#{number_of_days_in_month}
-
+#{days}
+#{amount_of_days_in_month}
 EOS
   end
-
 end

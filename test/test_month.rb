@@ -28,33 +28,33 @@ class TestMonth < Minitest::Test
 
   def test_amount_of_days_in_january
     m = Month.new(01, 2067)
-    assert_equal 31, m.number_of_days_in_month
+    assert_equal 31, m.amount_of_days_in_month
   end
 
   def test_amount_of_days_in_may
     m = Month.new(05, 2012)
-    assert_equal 31, m.number_of_days_in_month
+    assert_equal 31, m.amount_of_days_in_month
   end
 
   def test_amount_of_days_in_june
     m = Month.new(06, 1904)
-    assert_equal 30, m.number_of_days_in_month
+    assert_equal 30, m.amount_of_days_in_month
   end
 
     def test_amount_of_days_in_november
     m = Month.new(11, 1904)
-    assert_equal 30, m.number_of_days_in_month
+    assert_equal 30, m.amount_of_days_in_month
   end
 
 #Testing days of February When Leap Year and Not a Leap Year
   def test_amount_of_days_in_february_during_leap_year
     m = Month.new(2, 2008)
-    assert_equal(29, m.number_of_days_in_month)
+    assert_equal(29, m.amount_of_days_in_month)
   end
 
   def test_amount_of_days_in_february_not_during_leap_year
     m = Month.new(2, 1883)
-    assert_equal(28, m.number_of_days_in_month)
+    assert_equal(28, m.amount_of_days_in_month)
   end
 
 # Testing Format of Month Calander
